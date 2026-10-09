@@ -1,0 +1,8 @@
+{
+  "name": "TCAS Command Center",
+  "description": "Personalized Thai university admission tracker (TCAS) with multi-program timelines, verified requirements, and actionable checklists.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
