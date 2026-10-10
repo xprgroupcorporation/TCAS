@@ -2289,8 +2289,8 @@ export const BRANCHES: Branch[] = [
   {
     "id": "br-10010133",
     "programId": "prog-cmu-9",
-    "nameTh": "สาขาวิชาวิศวกรรมซอฟต์แวร์ (SE นานาชาติ)",
-    "nameEn": "สาขาวิชาวิศวกรรมซอฟต์แวร์ (SE นานาชาติ)",
+    "nameTh": "สาขาวิชาวิศวกรรมซอฟต์แวร์ (นานาชาติ)",
+    "nameEn": "Software Engineering (International)",
     "code": "10010133"
   },
   {
@@ -4893,38 +4893,111 @@ export const ADMISSION_PROJECTS: AdmissionProject[] = [
     "facultyId": "cmu-science_computing-9",
     "universityId": "cmu",
     "round": "TCAS1_PORTFOLIO",
-    "tcasProgramCode": "10010133101801A",
-    "projectNameTh": "โครงการรับตรงนานาชาติ Software Engineering",
-    "projectNameEn": "โครงการรับตรงนานาชาติ Software Engineering",
-    "quotaSeats": 35,
-    "studyTrack": "ทุกแผนการเรียน",
-    "gpaxMin": 2.75,
-    "tuitionFee": "40,000 บาท/ภาคการศึกษา",
+    "tcasProgramCode": "10040121220401E",
+    "projectNameTh": "TCAS รอบ 1 Portfolio สาขาวิชาวิศวกรรมซอฟต์แวร์ (นานาชาติ)",
+    "projectNameEn": "TCAS Round 1 Portfolio - Software Engineering (International)",
+    "quotaSeats": 30,
+    "studyTrack": "วิทย์-คณิต / Gifted School / ช่องทางนานาชาติ (ดูรายโครงการ)",
+    "gpaxMin": 2.50,
+    "tuitionFee": "40,000 บาท (ภาคการศึกษาแรกตามประกาศ)",
     "applicationFee": "500 บาท",
-    "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4 ภาษาอังกฤษ",
-    "selectionFormulaTh": "Portfolio ภาษาอังกฤษ 40% + สัมภาษณ์ภาษาอังกฤษ 40% + ภาษา 20%",
-    "curriculumType": "หลักสูตรปกติ",
+    "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4 (ยื่นผ่าน TCASFolio / PDF / URL)",
+    "selectionFormulaTh": "แฟ้มสะสมผลงาน 70% + สัมภาษณ์ 30%",
+    "curriculumType": "หลักสูตรนานาชาติ",
     "additionalConditionsTh": [
-      "IELTS ≥ 5.5 หรือ CMU-eTEGS ≥ 60",
-      "สัมภาษณ์ภาษาอังกฤษ 100%"
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ",
+      "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)",
+      "ไม่รับผู้สมัครที่จบหลักสูตร GED (ยกเว้นช่องทาง IPAS ดูประกาศ)"
     ],
-    "applicationUrl": "https://course.mytcas.com/universities/",
+    "subProjects": [
+      {
+        "id": "cmu-se-sub-competition",
+        "nameTh": "โครงการส่งเสริมนักเรียนผู้มีความสามารถพิเศษฯ ในการประกวดแข่งขัน (รหัส 00412171108011)",
+        "quotaSeats": 2,
+        "studyTrack": "หลักสูตรแกนกลาง (วิทย์-คณิตหรือเทียบเท่า)",
+        "gpaxMin": 2.50,
+        "generalEligibilityTh": [
+          "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)",
+          "ไม่รับผู้สมัครที่จบหลักสูตร GED"
+        ],
+        "additionalConditionsTh": [
+          "รางวัลชนะเลิศ / รองชนะเลิศอันดับ 1-2 แข่งขัน IT (NSC / YSC.CS / CAMT / ที่เกี่ยวข้อง) ระดับภาค/ประเทศ/นานาชาติ (ม.ปลาย)",
+          "SOP หัวข้อการพัฒนาซอฟต์แวร์กับ AI + ผลงาน Web/Mobile App พร้อมวิดีโอสาธิต"
+        ],
+        "selectionFormulaTh": "แฟ้มสะสมผลงาน 70% + สัมภาษณ์ 30%",
+        "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)",
+        "officialAnnouncementUrl": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=629"
+      },
+      {
+        "id": "cmu-se-sub-gifted",
+        "nameTh": "โครงการรับนักเรียนผู้มีความสามารถพิเศษฯ (Gifted IT) (รหัส 00412171108020)",
+        "quotaSeats": 8,
+        "studyTrack": "Gifted School ของ CAMT",
+        "gpaxMin": 3.00,
+        "generalEligibilityTh": [
+          "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)",
+          "ไม่รับผู้สมัครที่จบหลักสูตร GED"
+        ],
+        "additionalConditionsTh": [
+          "ต้องจบหลักสูตร Gifted School ของ CAMT มช. (มีใบรับรองผลการเรียน)"
+        ],
+        "selectionFormulaTh": "แฟ้มสะสมผลงาน 70% + สัมภาษณ์ 30%",
+        "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)",
+        "officialAnnouncementUrl": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=631"
+      },
+      {
+        "id": "cmu-se-sub-goodgrades",
+        "nameTh": "การรับนักเรียนที่มีผลการเรียนดี (รหัส 00412171103011)",
+        "quotaSeats": 5,
+        "studyTrack": "หลักสูตรแกนกลาง (วิทย์-คณิตหรือเทียบเท่า)",
+        "gpaxMin": 3.25,
+        "generalEligibilityTh": [
+          "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)",
+          "ไม่รับผู้สมัครที่จบหลักสูตร GED"
+        ],
+        "selectionFormulaTh": "แฟ้มสะสมผลงาน 70% + สัมภาษณ์ 30%",
+        "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)",
+        "officialAnnouncementUrl": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=628"
+      },
+      {
+        "id": "cmu-se-sub-ipas",
+        "nameTh": "การรับผ่านช่องทางนานาชาติ ROUND 1 (รหัส 00412181996010)",
+        "quotaSeats": 15,
+        "studyTrack": "ช่องทางนานาชาติ (IPAS)",
+        "additionalConditionsTh": [
+          "รายละเอียดเกณฑ์ดูประกาศทางการของโครงการ"
+        ],
+        "officialAnnouncementUrl": "https://course.mytcas.com/programs/10040121220401E"
+      }
+    ],
+    "applicationUrl": "https://course.mytcas.com/programs/10040121220401E",
     "source": {
-      "name": "ประกาศรับสมัคร myTCAS / วิทยาลัยศิลปะ สื่อ และเทคโนโลยี (CAMT)",
-      "url": "https://course.mytcas.com/universities/",
+      "name": "myTCAS 10040121220401E + ประกาศรับสมัคร มช. 2570",
+      "url": "https://course.mytcas.com/programs/10040121220401E",
       "type": "Official myTCAS Portal",
-      "lastChecked": "2026-10-07",
+      "lastChecked": "2026-10-10",
       "verificationStatus": "verified"
     },
     "requirements": [
       {
         "id": "req-proj-cmu-se-port-gpax",
         "type": "GPAX",
-        "nameTh": "GPAX ขั้นต่ำ 2.75",
-        "nameEn": "Minimum GPAX 2.75",
-        "minScore": "2.75",
-        "detailsTh": "เกรดเฉลี่ยสะสม 5 ภาคเรียน ไม่ต่ำกว่า 2.75",
-        "detailsEn": "5-term cumulative GPA at least 2.75",
+        "nameTh": "GPAX ขั้นต่ำ 2.50 (บางโครงการ 3.00 / 3.25)",
+        "nameEn": "Minimum GPAX 2.50 (up to 3.25 by track)",
+        "minScore": "2.50",
+        "detailsTh": "เกรดเฉลี่ยสะสม ม.4-6 (5 ภาคเรียน) ไม่ต่ำกว่า 2.50 (ผู้จบ ม.6 ใช้ 6 ภาคเรียน); Gifted IT ≥ 3.00; เรียนดี ≥ 3.25",
+        "detailsEn": "5-term cumulative GPA at least 2.50 (6 terms for graduates)",
         "isMandatory": true
       }
     ],
@@ -4933,9 +5006,27 @@ export const ADMISSION_PROJECTS: AdmissionProject[] = [
         "id": "doc-proj-cmu-se-port-trans",
         "nameTh": "ใบรายงานผลการเรียน ปพ.1 (5 ภาคเรียน)",
         "nameEn": "Transcript",
-        "detailsTh": "ฉบับจริงพร้อมตราประทับโรงเรียน",
+        "detailsTh": "ฉบับจริงพร้อมตราประทับโรงเรียน (หน้า-หลัง)",
         "detailsEn": "Official high school transcript",
         "isMandatory": true,
+        "submissionFormat": "PDF"
+      },
+      {
+        "id": "doc-proj-cmu-se-port-portfolio",
+        "nameTh": "แฟ้มสะสมผลงาน (ไม่เกิน 10 หน้า)",
+        "nameEn": "Portfolio",
+        "detailsTh": "TCASFolio / PDF / URL (เปิดสาธารณะ): SOP การพัฒนาซอฟต์แวร์กับ AI, ผลงาน Web/Mobile App + วิดีโอสาธิต, ปพ.1, รางวัล/กิจกรรม",
+        "detailsEn": "Max 10 pages via TCASFolio / PDF / URL",
+        "isMandatory": true,
+        "submissionFormat": "TCASFolio / PDF / URL"
+      },
+      {
+        "id": "doc-proj-cmu-se-port-cert",
+        "nameTh": "หลักฐานรางวัล / ใบรับรอง Gifted (ตามโครงการ)",
+        "nameEn": "Competition / Gifted certificates",
+        "detailsTh": "ประกวดแข่งขัน: ประกาศนียบัตรรางวัล top-3; Gifted IT: ใบรับรองจบ Gifted School CAMT",
+        "detailsEn": "Award or Gifted School certificates",
+        "isMandatory": false,
         "submissionFormat": "PDF"
       }
     ],
@@ -4943,14 +5034,14 @@ export const ADMISSION_PROJECTS: AdmissionProject[] = [
       {
         "id": "ev-proj-cmu-se-port-open",
         "type": "APPLICATION_OPENS",
-        "titleTh": "เปิดรับสมัคร โครงการรับตรงนานาชาติ Software Engineering",
+        "titleTh": "เปิดรับสมัคร TCAS รอบ 1 Portfolio สาขาวิชาวิศวกรรมซอฟต์แวร์ (นานาชาติ)",
         "titleEn": "Application Opens",
         "startDate": "2026-10-01",
         "source": {
           "name": "myTCAS Portal",
-          "url": "https://course.mytcas.com/universities/",
+          "url": "https://course.mytcas.com/programs/10040121220401E",
           "type": "Official myTCAS Portal",
-          "lastChecked": "2026-10-07",
+          "lastChecked": "2026-10-10",
           "verificationStatus": "verified"
         },
         "status": "verified"
@@ -4958,14 +5049,14 @@ export const ADMISSION_PROJECTS: AdmissionProject[] = [
       {
         "id": "ev-proj-cmu-se-port-close",
         "type": "APPLICATION_CLOSES",
-        "titleTh": "ปิดรับสมัคร โครงการรับตรงนานาชาติ Software Engineering (23:59 น.)",
+        "titleTh": "ปิดรับสมัคร TCAS รอบ 1 Portfolio สาขาวิชาวิศวกรรมซอฟต์แวร์ (นานาชาติ) (23:59 น.)",
         "titleEn": "Application Deadline",
         "startDate": "2026-11-30",
         "source": {
           "name": "myTCAS Portal",
-          "url": "https://course.mytcas.com/universities/",
+          "url": "https://course.mytcas.com/programs/10040121220401E",
           "type": "Official myTCAS Portal",
-          "lastChecked": "2026-10-07",
+          "lastChecked": "2026-10-10",
           "verificationStatus": "verified"
         },
         "status": "verified"

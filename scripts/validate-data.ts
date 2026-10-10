@@ -68,8 +68,8 @@ for (const p of ADMISSION_PROJECTS) {
   if (!Number.isInteger(p.quotaSeats) || p.quotaSeats <= 0)
     err(tag, `quotaSeats must be a positive integer (got ${p.quotaSeats})`);
   if (!p.tcasProgramCode) warn(tag, 'missing tcasProgramCode');
-  else if (!/^\d{14}A$/.test(p.tcasProgramCode))
-    warn(tag, `tcasProgramCode '${p.tcasProgramCode}' does not look like a real myTCAS code (14 digits + A)`);
+  else if (!/^\d{14}[A-Z]$/.test(p.tcasProgramCode))
+    warn(tag, `tcasProgramCode '${p.tcasProgramCode}' does not look like a real myTCAS code (14 digits + letter)`);
   if (!p.applicationUrl?.startsWith('http')) warn(tag, 'applicationUrl is not an http(s) link');
   if (p.gpaxMin !== undefined) {
     const g = Number(p.gpaxMin);
@@ -128,4 +128,19 @@ console.log(
   `\nchecked ${ADMISSION_PROJECTS.length} projects, ${BRANCHES.length} branches, ${PROGRAMS.length} programs, ${FACULTIES.length} faculties`
 );
 console.log(`${errors.length} error(s), ${warns.length} warning(s)`);
+
+// ---- 4. official-watch coverage: how many projects have a live official source? ----
+try {
+  const { readFileSync } = await import('node:fs');
+  const { join } = await import('node:path');
+  const snaps = JSON.parse(readFileSync(join(process.cwd(), 'src', 'data', 'officialSnapshots.json'), 'utf8'));
+  const watched = new Set((snaps as { projectId: string }[]).map((s) => s.projectId));
+  const watchedKnown = [...watched].filter((id) => seenProj.has(id));
+  console.log(
+    `official watch coverage: ${watchedKnown.length}/${ADMISSION_PROJECTS.length} projects (${(snaps as unknown[]).length} watched sources)`
+  );
+} catch {
+  console.log('official watch coverage: snapshots file unreadable, skipped');
+}
+
 process.exit(errors.length > 0 ? 1 : 0);

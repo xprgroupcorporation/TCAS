@@ -343,13 +343,65 @@ const rawPrograms = [
         ]
       },
       {
-        nameTh: 'สาขาวิชาวิศวกรรมซอฟต์แวร์ (SE นานาชาติ)', code: '10010133',
+        // ข้อมูลตรวจกับ myTCAS 10040121220401E + admission.reg.cmu.ac.th (fid 629/631/628) เมื่อ 2026-10-10
+        // หมายเหตุ: โครงการที่ 4 (IPAS) รายละเอียดยังไม่ครบ ใส่เฉพาะที่นั่ง+รหัสตาม myTCAS
+        nameTh: 'สาขาวิชาวิศวกรรมซอฟต์แวร์ (นานาชาติ)', nameEn: 'Software Engineering (International)', code: '10010133',
         projects: [
           {
-            id: 'proj-cmu-se-port', round: 'TCAS1_PORTFOLIO', nameTh: 'โครงการรับตรงนานาชาติ Software Engineering', seats: 35,
-            track: 'ทุกแผนการเรียน', gpax: 2.75, tuition: '40,000 บาท/ภาคการศึกษา', appFee: '500 บาท',
-            portLimit: 'ไม่เกิน 10 หน้า A4 ภาษาอังกฤษ', formula: 'Portfolio ภาษาอังกฤษ 40% + สัมภาษณ์ภาษาอังกฤษ 40% + ภาษา 20%', verified: true,
-            conds: ['IELTS ≥ 5.5 หรือ CMU-eTEGS ≥ 60', 'สัมภาษณ์ภาษาอังกฤษ 100%'],
+            id: 'proj-cmu-se-port', round: 'TCAS1_PORTFOLIO', nameTh: 'TCAS รอบ 1 Portfolio สาขาวิชาวิศวกรรมซอฟต์แวร์ (นานาชาติ)', seats: 30,
+            track: 'วิทย์-คณิต / Gifted School / ช่องทางนานาชาติ (ดูรายโครงการ)', gpax: 2.50, tuition: '40,000 บาท (ภาคการศึกษาแรกตามประกาศ)', appFee: '500 บาท',
+            portLimit: 'ไม่เกิน 10 หน้า A4 (ยื่นผ่าน TCASFolio / PDF / URL)', formula: 'แฟ้มสะสมผลงาน 70% + สัมภาษณ์ 30%', verified: true,
+            tcasCode: '10040121220401E',
+            appUrl: 'https://course.mytcas.com/programs/10040121220401E',
+            sourceName: 'myTCAS 10040121220401E + ประกาศรับสมัคร มช. 2570',
+            sourceUrl: 'https://course.mytcas.com/programs/10040121220401E',
+            checked: '2026-10-10',
+            conds: ['รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)', 'ไม่รับผู้สมัครที่จบหลักสูตร GED (ยกเว้นช่องทาง IPAS ดูประกาศ)'],
+            subs: [
+              {
+                id: 'cmu-se-sub-competition',
+                nameTh: 'โครงการส่งเสริมนักเรียนผู้มีความสามารถพิเศษฯ ในการประกวดแข่งขัน (รหัส 00412171108011)',
+                quotaSeats: 2,
+                studyTrack: 'หลักสูตรแกนกลาง (วิทย์-คณิตหรือเทียบเท่า)',
+                gpaxMin: 2.50,
+                generalEligibilityTh: ['รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)', 'ไม่รับผู้สมัครที่จบหลักสูตร GED'],
+                additionalConditionsTh: ['รางวัลชนะเลิศ / รองชนะเลิศอันดับ 1-2 แข่งขัน IT (NSC / YSC.CS / CAMT / ที่เกี่ยวข้อง) ระดับภาค/ประเทศ/นานาชาติ (ม.ปลาย)', 'SOP หัวข้อการพัฒนาซอฟต์แวร์กับ AI + ผลงาน Web/Mobile App พร้อมวิดีโอสาธิต'],
+                selectionFormulaTh: 'แฟ้มสะสมผลงาน 70% + สัมภาษณ์ 30%',
+                portfolioPagesLimit: 'ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)',
+                officialAnnouncementUrl: 'https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=629'
+              },
+              {
+                id: 'cmu-se-sub-gifted',
+                nameTh: 'โครงการรับนักเรียนผู้มีความสามารถพิเศษฯ (Gifted IT) (รหัส 00412171108020)',
+                quotaSeats: 8,
+                studyTrack: 'Gifted School ของ CAMT',
+                gpaxMin: 3.00,
+                generalEligibilityTh: ['รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)', 'ไม่รับผู้สมัครที่จบหลักสูตร GED'],
+                additionalConditionsTh: ['ต้องจบหลักสูตร Gifted School ของ CAMT มช. (มีใบรับรองผลการเรียน)'],
+                selectionFormulaTh: 'แฟ้มสะสมผลงาน 70% + สัมภาษณ์ 30%',
+                portfolioPagesLimit: 'ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)',
+                officialAnnouncementUrl: 'https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=631'
+              },
+              {
+                id: 'cmu-se-sub-goodgrades',
+                nameTh: 'การรับนักเรียนที่มีผลการเรียนดี (รหัส 00412171103011)',
+                quotaSeats: 5,
+                studyTrack: 'หลักสูตรแกนกลาง (วิทย์-คณิตหรือเทียบเท่า)',
+                gpaxMin: 3.25,
+                generalEligibilityTh: ['รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)', 'ไม่รับผู้สมัครที่จบหลักสูตร GED'],
+                selectionFormulaTh: 'แฟ้มสะสมผลงาน 70% + สัมภาษณ์ 30%',
+                portfolioPagesLimit: 'ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)',
+                officialAnnouncementUrl: 'https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=628'
+              },
+              {
+                id: 'cmu-se-sub-ipas',
+                nameTh: 'การรับผ่านช่องทางนานาชาติ ROUND 1 (รหัส 00412181996010)',
+                quotaSeats: 15,
+                studyTrack: 'ช่องทางนานาชาติ (IPAS)',
+                additionalConditionsTh: ['รายละเอียดเกณฑ์ดูประกาศทางการของโครงการ'],
+                officialAnnouncementUrl: 'https://course.mytcas.com/programs/10040121220401E'
+              }
+            ],
             open: '2026-10-01', close: '2026-11-30'
           }
         ]
@@ -1244,7 +1296,7 @@ rawPrograms.forEach(rp => {
       id: branchId,
       programId: progId,
       nameTh: br.nameTh,
-      nameEn: br.nameTh,
+      nameEn: br.nameEn || br.nameTh,
       code: br.code
     });
 

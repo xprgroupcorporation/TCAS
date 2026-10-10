@@ -605,7 +605,7 @@ export const ExploreProgramsView: React.FC<ExploreProgramsViewProps> = ({
               {p.branch.nameTh}
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              ({p.program.nameEn}) · หลักสูตร{p.program.degreeName}
+              ({p.branch.nameEn !== p.branch.nameTh ? p.branch.nameEn : p.program.nameEn}) · หลักสูตร{p.program.degreeName}
             </p>
           </div>
 

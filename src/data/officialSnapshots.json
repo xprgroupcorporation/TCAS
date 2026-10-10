@@ -20,5 +20,38 @@
     "fee": "38,000",
     "formula": "60/40",
     "checkedAt": "2026-10-10"
+  },
+  {
+    "id": "cmu-se-sub-competition",
+    "projectId": "proj-cmu-se-port",
+    "site": "cmu-reg",
+    "source": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=629",
+    "seats": 2,
+    "gpax": "2.50",
+    "fee": "40,000",
+    "formula": "70/30",
+    "checkedAt": "2026-10-10"
+  },
+  {
+    "id": "cmu-se-sub-gifted",
+    "projectId": "proj-cmu-se-port",
+    "site": "cmu-reg",
+    "source": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=631",
+    "seats": 8,
+    "gpax": "3.00",
+    "fee": "40,000",
+    "formula": "70/30",
+    "checkedAt": "2026-10-10"
+  },
+  {
+    "id": "cmu-se-sub-goodgrades",
+    "projectId": "proj-cmu-se-port",
+    "site": "cmu-reg",
+    "source": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=628",
+    "seats": 5,
+    "gpax": "3.25",
+    "fee": "40,000",
+    "formula": "70/30",
+    "checkedAt": "2026-10-10"
   }
 ]
