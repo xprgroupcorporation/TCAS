@@ -601,14 +601,11 @@ export const ExploreProgramsView: React.FC<ExploreProgramsViewProps> = ({
             onClick={() => onOpenDetail(p)}
             className="cursor-pointer group space-y-1"
           >
-            <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-              {p.program.nameTh} · {p.program.degreeName}
-            </div>
             <h3 className="font-bold text-lg text-slate-900 group-hover:text-purple-700 dark:group-hover:text-purple-300 dark:text-white transition-colors leading-snug">
               {p.branch.nameTh}
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              {p.program.nameEn}
+              ({p.program.nameEn}) · หลักสูตร{p.program.degreeName}
             </p>
           </div>
 
