@@ -116,6 +116,9 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   // Main feature All-in-One view mode
   const [subView, setSubView] = useState<CalendarSubView>(initialSubView);
 
+  // What to show: saved universities, tasks, or both
+  const [displayMode, setDisplayMode] = useState<'both' | 'uni' | 'tasks'>('both');
+
   // Active calendar month: default to November 2026 (พฤศจิกายน 2569 - ช่วงพีค TCAS 1 Portfolio)
   const [currentYear, setCurrentYear] = useState<number>(2026);
   const [currentMonth, setCurrentMonth] = useState<number>(10); // 10 = November (0-indexed)
@@ -906,8 +909,35 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
         </div>
       </div>
 
+      {/* 1b. DISPLAY FILTER: universities / tasks / both */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-700 px-3 py-2 shadow-xs flex flex-wrap items-center justify-between gap-2">
+        <span className="text-xs font-bold text-slate-500 dark:text-slate-400">แสดง:</span>
+        <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-0.5 rounded-xl border border-slate-200/80 dark:border-slate-700">
+          {([
+            { id: 'both', label: 'ทั้งมหาลัย + งาน' },
+            { id: 'uni', label: 'เฉพาะมหาลัยที่บันทึก' },
+            { id: 'tasks', label: 'เฉพาะงานที่ต้องทำ' },
+          ] as const).map((m) => (
+            <button
+              key={m.id}
+              onClick={() => setDisplayMode(m.id)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                displayMode === m.id
+                  ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs'
+                  : 'text-slate-600 hover:text-slate-900 dark:text-slate-300'
+              }`}
+            >
+              {m.label}
+            </button>
+          ))}
+        </div>
+        <span className="text-[11px] text-slate-400 dark:text-slate-500">
+          {displayMode === 'both' ? 'เห็นภาพรวมทั้งหมด' : displayMode === 'uni' ? 'โฟกัสเดดไลน์มหาลัย' : 'โฟกัสงานที่ต้องทำ'}
+        </span>
+      </div>
+
       {/* 2. CALENDAR CONTROLS & MONTH SELECTOR BAR (SHOWN IN ALL OR GRID MODE) */}
-      {(subView === 'all' || subView === 'grid') && (
+      {(subView === 'all' || subView === 'grid') && displayMode !== 'tasks' && (
         <>
           <div className="bg-white rounded-xl border border-slate-200/90 p-2 sm:p-2.5 shadow-2xs space-y-1.5">
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -1385,7 +1415,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
       )}
 
       {/* ALL-IN-ONE EXTENDED SECTIONS: TIMELINE ROADMAP & CHECKLIST (SIDE-BY-SIDE / STACKED) */}
-      {subView === 'all' && (
+      {subView === 'all' && displayMode !== 'tasks' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-1">
           {/* Section 1: Timeline Roadmap */}
           <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-2xs">
@@ -1400,11 +1430,88 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
           </div>
 
           {/* Section 2: Calendar Checklist */}
-          <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-2xs">
-            {renderChecklistSection()}
-          </div>
+          {displayMode === 'both' && (
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-2xs">
+              {renderChecklistSection()}
+            </div>
+          )}
         </div>
       )}
+
+      {/* CHECKLIST STANDALONE (all mode + tasks focus, or checklist subview) */}
+      {((subView === 'all' && displayMode === 'tasks') || subView === 'checklist') && displayMode !== 'uni' && (
+        <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-2xs">
+          {renderChecklistSection()}
+        </div>
+      )}
+
+      {/* BOTTOM: plain-text tracking list (easy to scan everything at once) */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-700 p-4 sm:p-5 shadow-2xs space-y-4">
+        <div>
+          <h2 className="text-base font-bold text-slate-900 dark:text-white">
+            สรุปทั้งหมดแบบข้อความ (เช็กง่ายในที่เดียว)
+          </h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            ลิสต์สาขาที่บันทึกไว้กับงานที่ต้องทำทั้งหมด เรียงตามตัวอักษร ไม่ต้องเลื่อนหาจากการ์ด
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div className="space-y-2">
+            <h3 className="text-sm font-bold text-slate-700 dark:text-slate-200">
+              มหาลัยที่บันทึก ({allProjects.filter((p) => trackedIds.has(p.project.id)).length})
+            </h3>
+            {allProjects.filter((p) => trackedIds.has(p.project.id)).length === 0 ? (
+              <p className="text-sm text-slate-500">ยังไม่มีสาขาที่บันทึกไว้</p>
+            ) : (
+              <ol className="list-decimal ml-5 space-y-1 text-slate-800 dark:text-slate-200">
+                {allProjects
+                  .filter((p) => trackedIds.has(p.project.id))
+                  .map((p) => (
+                    <li key={p.project.id}>
+                      <button
+                        onClick={() => onOpenDetail(p)}
+                        className="hover:underline cursor-pointer text-left"
+                      >
+                        <span className="font-bold">{getUniversityThaiAbbr(p.university.id)}</span>
+                        {' · '}
+                        {p.program.nameTh}
+                        {' · ปิดรับ '}
+                        {formatDateThai(p.applicationCloseDate)}
+                        {' ('}
+                        {getDaysCountdownThai(p.daysUntilClose)}
+                        {')'}
+                      </button>
+                    </li>
+                  ))}
+              </ol>
+            )}
+          </div>
+          <div className="space-y-2">
+            <h3 className="text-sm font-bold text-slate-700 dark:text-slate-200">
+              งานที่ต้องทำ ({tasks.filter((t) => !t.isCompleted).length} ค้าง / {tasks.length} ทั้งหมด)
+            </h3>
+            {tasks.length === 0 ? (
+              <p className="text-sm text-slate-500">ยังไม่มีงาน บันทึกสาขาเพื่อสร้างเช็กลิสต์อัตโนมัติ</p>
+            ) : (
+              <ol className="list-decimal ml-5 space-y-1 text-slate-800 dark:text-slate-200">
+                {tasks.map((t) => (
+                  <li key={t.id} className={t.isCompleted ? 'line-through text-slate-400' : ''}>
+                    <button
+                      onClick={() => onToggleTask && onToggleTask(t.id)}
+                      className="hover:underline cursor-pointer text-left"
+                      title="แตะเพื่อติ๊กเสร็จ / เอาเครื่องหมายออก"
+                    >
+                      {t.isCompleted ? '✓ ' : '○ '}
+                      {t.titleTh || t.titleEn}
+                      {t.dueDate ? ` · ส่ง ${formatDateThai(t.dueDate)}` : ''}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
+        </div>
+      </div>
 
       {/* TIMELINE FULL VIEW */}
       {subView === 'timeline' && (
@@ -1417,13 +1524,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
             onToggleTask={onToggleTask || (() => {})}
             embedded={false}
           />
-        </div>
-      )}
-
-      {/* CHECKLIST FULL VIEW */}
-      {subView === 'checklist' && (
-        <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-2xs">
-          {renderChecklistSection()}
         </div>
       )}
 

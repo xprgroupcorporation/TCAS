@@ -197,18 +197,13 @@ export const ExploreProgramsView: React.FC<ExploreProgramsViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-700 pb-4">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
-              ค้นหาหลักสูตร สาขาวิชา และโครงการรับสมัคร (myTCAS)
-            </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-purple-100 text-purple-800 border border-purple-200">
-              ระบบสืบค้นหลักสูตร มช. & myTCAS
-            </span>
-          </div>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            เลือกมหาวิทยาลัย คณะ และสาขาวิชาเพื่อดูจำนวนรับ เกณฑ์คะแนนขั้นต่ำ (GPAX) และเงื่อนไขเพิ่มเติมเฉพาะโครงการ
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            หามหาลัย
+          </h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            เลือกมหาลัย คณะ สาขา แล้วกดบันทึกเพื่อสร้างปฏิทินกับเช็กลิสต์อัตโนมัติ
           </p>
         </div>
 
@@ -296,8 +291,8 @@ export const ExploreProgramsView: React.FC<ExploreProgramsViewProps> = ({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="ค้นหาชื่อคณะ, สาขาวิชา, รหัสหลักสูตร, โครงการรับสมัคร (เช่น แพทย์, วิศวะคอม, ปัญญาประดิษฐ์, นิติศาสตร์, บัญชี, DSI, หุ่นยนต์)..."
-            className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 font-medium"
+            placeholder="ค้นหาชื่อคณะ สาขา หรือโครงการ เช่น แพทย์ วิศวะคอม..."
+            className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-xl text-base placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 font-medium text-slate-900 dark:text-white"
           />
           {searchQuery && (
             <button

@@ -4,14 +4,11 @@
  */
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Header, ActiveTab } from './components/Header';
+import { Header, ActiveTab, normalizeTab } from './components/Header';
 import { DashboardView } from './components/DashboardView';
 import { ExploreProgramsView } from './components/ExploreProgramsView';
 import { CalendarView } from './components/CalendarView';
-import { TimelineView } from './components/TimelineView';
-import { ChecklistView } from './components/ChecklistView';
 import { AlertsView } from './components/AlertsView';
-import { IngestSchemaView } from './components/IngestSchemaView';
 import { ProgramDetailModal } from './components/ProgramDetailModal';
 import { SourceProvenanceModal } from './components/SourceProvenanceModal';
 import {
@@ -21,16 +18,22 @@ import {
 } from './utils/tcasHelpers';
 import { UserTask, ChangeAlert } from './types/tcas';
 import { INITIAL_CHANGE_ALERTS } from './data/tcasDatabase';
+import { SettingsProvider } from './settings';
 
 const STORAGE_KEY_TRACKED = 'tcas_tracked_ids_v1';
 const STORAGE_KEY_TASKS = 'tcas_tasks_v1';
 const STORAGE_KEY_ALERTS = 'tcas_alerts_v1';
 
-export default function App() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
+function AppInner() {
+  const [activeTab, setActiveTab] = useState<ActiveTab>('home');
   const [selectedDetailProject, setSelectedDetailProject] =
     useState<EnrichedAdmissionProject | null>(null);
   const [isSourceModalOpen, setIsSourceModalOpen] = useState<boolean>(false);
+
+  // Migrate legacy tabs (dashboard/checklist/timeline/ingest) to the 4-tab MVP
+  useEffect(() => {
+    setActiveTab((t) => normalizeTab(t));
+  }, []);
 
   // All enriched programs from the 5 universities
   const allProjects = useMemo(() => getAllEnrichedProjects(), []);
@@ -173,10 +176,11 @@ export default function App() {
   };
 
   const pendingTasksCount = tasks.filter((t) => !t.isCompleted).length;
+  const tab = normalizeTab(activeTab);
 
-  // Navigate to Dashboard and scroll to the tracked programs section
+  // Navigate to home and scroll to the tracked programs section
   const handleNavigateToTracked = () => {
-    setActiveTab('dashboard');
+    setActiveTab('home');
     setTimeout(() => {
       const el = document.getElementById('tracked-programs-section');
       if (el) {
@@ -189,26 +193,34 @@ export default function App() {
     }, 100);
   };
 
+  // Escape closes the detail modal from anywhere
+  useEffect(() => {
+    if (!selectedDetailProject) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedDetailProject(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selectedDetailProject]);
+
   return (
-    <div className="min-h-screen bg-neutral-50 flex flex-col text-neutral-900">
-      {/* Top Navigation Bar adhering to the Top Bar Contract */}
+    <div className="min-h-screen bg-neutral-50 flex flex-col text-neutral-900 dark:bg-slate-950 dark:text-slate-100">
       <Header
-        activeTab={activeTab}
+        activeTab={tab}
         setActiveTab={setActiveTab}
         trackedCount={trackedProjects.length}
         unreadAlertsCount={changeAlerts.length}
         pendingTasksCount={pendingTasksCount}
-        onOpenSourceModal={() => setIsSourceModalOpen(true)}
         onNavigateToTracked={handleNavigateToTracked}
       />
 
       {/* Main Workspace Viewport */}
       <main
         className={`flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 ${
-          activeTab === 'calendar' ? 'py-2 sm:py-2.5' : 'py-6'
+          tab === 'calendar' ? 'py-2 sm:py-2.5' : 'py-6'
         }`}
       >
-        {activeTab === 'dashboard' && (
+        {tab === 'home' && (
           <DashboardView
             trackedProjects={trackedProjects}
             allProjects={allProjects}
@@ -216,13 +228,13 @@ export default function App() {
             changeAlerts={changeAlerts}
             onToggleTask={handleToggleTask}
             onOpenDetail={(p) => setSelectedDetailProject(p)}
-            onNavigateTab={setActiveTab}
+            onNavigateTab={(t) => setActiveTab(normalizeTab(t as ActiveTab))}
             onUntrack={handleToggleTrack}
             onOpenSourceModal={() => setIsSourceModalOpen(true)}
           />
         )}
 
-        {activeTab === 'explore' && (
+        {tab === 'explore' && (
           <ExploreProgramsView
             projects={allProjects}
             trackedIds={trackedIds}
@@ -231,7 +243,7 @@ export default function App() {
           />
         )}
 
-        {(activeTab === 'calendar' || activeTab === 'timeline') && (
+        {tab === 'calendar' && (
           <CalendarView
             allProjects={allProjects}
             trackedIds={trackedIds}
@@ -242,22 +254,11 @@ export default function App() {
             onToggleTask={handleToggleTask}
             onAddTask={handleAddTask}
             onDeleteTask={handleDeleteTask}
-            initialSubView={activeTab === 'timeline' ? 'timeline' : 'all'}
+            initialSubView="all"
           />
         )}
 
-        {activeTab === 'checklist' && (
-          <ChecklistView
-            tasks={tasks}
-            trackedProjects={trackedProjects}
-            onToggleTask={handleToggleTask}
-            onAddTask={handleAddTask}
-            onDeleteTask={handleDeleteTask}
-            onOpenDetail={(p) => setSelectedDetailProject(p)}
-          />
-        )}
-
-        {activeTab === 'alerts' && (
+        {tab === 'alerts' && (
           <AlertsView
             alerts={changeAlerts}
             allProjects={allProjects}
@@ -265,8 +266,6 @@ export default function App() {
             onSimulateChange={handleSimulateChange}
           />
         )}
-
-        {activeTab === 'ingest' && <IngestSchemaView />}
       </main>
 
       {/* Program Detail Breakdown Modal */}
@@ -288,5 +287,13 @@ export default function App() {
         onSimulateChange={handleSimulateChange}
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <SettingsProvider>
+      <AppInner />
+    </SettingsProvider>
   );
 }
