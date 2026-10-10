@@ -31,8 +31,13 @@ per-project seats) for officially verified entries.
   seat math (`quotaSeats` must equal the sub-project sum), code format, date
   order, stale stamps. Fix every ERROR before shipping.
 - `npm run data:check` re-fetches server-rendered official pages (CMU
-  admission reg) and compares seats / GPAX / fee against
+  admission reg) and compares seats / GPAX / fee / formula against
   `src/data/officialSnapshots.json`. Exit 2 means the university changed
   something: correct the DB + raw entry, extend the snapshot, re-run.
   (`course.mytcas.com` program pages are JS-rendered, so myTCAS cross-checks
   stay manual for now.)
+- `npm run data:match` downloads the full official course index
+  (4150 programs) and Ctrl+F-matches EVERY db program by real myTCAS code,
+  then diffs faculty/branch names and seat sanity. Unmatched mock codes get
+  top-3 official candidates with real codes in `official-match-report.json`
+  for human review before swapping.

@@ -10,7 +10,8 @@
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
     "data:validate": "tsx scripts/validate-data.ts",
-    "data:check": "node scripts/check-official.mjs"
+    "data:check": "node scripts/check-official.mjs",
+    "data:match": "python3 scripts/match-official.py"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
