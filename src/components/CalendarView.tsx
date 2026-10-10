@@ -675,7 +675,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
             onClick={() => setChecklistFilterProject('all')}
             className={`px-3 py-1 rounded-lg font-bold whitespace-nowrap transition-all cursor-pointer ${
               checklistFilterProject === 'all'
-                ? 'bg-slate-900 text-white shadow-2xs'
+                ? 'bg-slate-900 text-white shadow-2xs dark:bg-white dark:text-slate-900'
                 : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
             }`}
           >
@@ -1706,7 +1706,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                   setDayInspectorDate(null);
                   setDayInlineTaskTitle('');
                 }}
-                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold cursor-pointer transition-colors"
+                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold cursor-pointer transition-colors dark:bg-white dark:hover:bg-slate-200 dark:text-slate-900"
               >
                 ปิดหน้านี้
               </button>
@@ -1982,7 +1982,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
 
               <button
                 onClick={() => setInspectedProject(null)}
-                className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 cursor-pointer"
+                className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white hover:bg-slate-800 cursor-pointer dark:bg-white dark:hover:bg-slate-200 dark:text-slate-900"
               >
                 ปิดหน้านี้
               </button>
@@ -2146,7 +2146,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               </span>
               <button
                 onClick={() => setShowReorderModal(false)}
-                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold cursor-pointer transition-colors"
+                className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold cursor-pointer transition-colors dark:bg-white dark:hover:bg-slate-200 dark:text-slate-900"
               >
                 เสร็จสิ้น
               </button>

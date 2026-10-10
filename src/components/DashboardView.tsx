@@ -56,7 +56,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="flex flex-wrap items-center gap-2.5 mt-4">
           <button
             onClick={() => onNavigateTab('explore')}
-            className="px-4 py-2.5 bg-white hover:bg-blue-50 text-blue-900 rounded-xl text-sm font-extrabold transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-2.5 bg-white hover:bg-blue-50 text-blue-900 rounded-xl text-sm font-extrabold transition-all shadow-md flex items-center gap-1.5 cursor-pointer dark:bg-white dark:hover:bg-blue-50 dark:text-blue-900"
           >
             <Plus className="h-4 w-4 text-blue-700" />
             <span>ค้นหาและเพิ่มสาขา</span>

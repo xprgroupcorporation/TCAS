@@ -26,6 +26,101 @@
   }
 }
 
+/*
+ * Global dark-mode remap for legacy light-only surfaces.
+ * Unlayered CSS wins over Tailwind's layered utilities, so this fixes
+ * every component at once. Only neutral slate/white is remapped here:
+ * colored pastel boxes (amber/blue/purple/green tints with dark text)
+ * intentionally stay light because they remain readable in dark mode.
+ */
+.dark body {
+  background-color: var(--color-slate-950);
+}
+
+/* Translucent surface variants first ... */
+.dark [class*="bg-slate-50/"],
+.dark [class*="bg-slate-100/"] {
+  background-color: var(--color-slate-800);
+}
+
+.dark [class*="bg-slate-200/"] {
+  background-color: var(--color-slate-700);
+}
+
+/* ... then solid surfaces win ties (e.g. base bg-white + hover:bg-slate-50). */
+.dark .bg-white {
+  background-color: var(--color-slate-900);
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100 {
+  background-color: var(--color-slate-800);
+}
+
+.dark .bg-slate-200 {
+  background-color: var(--color-slate-700);
+}
+
+/* Slate text stays readable whether its surface was remapped (dark)
+   or intentionally left light (pastel boxes). */
+.dark .text-slate-900 {
+  color: var(--color-slate-100);
+}
+
+.dark .text-slate-800 {
+  color: var(--color-slate-200);
+}
+
+.dark .text-slate-700 {
+  color: var(--color-slate-300);
+}
+
+.dark .text-slate-600,
+.dark .text-slate-500 {
+  color: var(--color-slate-400);
+}
+
+/* Borders and dividers. */
+.dark [class*="border-slate-200/"],
+.dark [class*="border-slate-100/"] {
+  border-color: var(--color-slate-700);
+}
+
+.dark .border-slate-200,
+.dark .border-slate-100 {
+  border-color: var(--color-slate-700);
+}
+
+.dark .border-slate-300 {
+  border-color: var(--color-slate-600);
+}
+
+.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--color-slate-800);
+}
+
+.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--color-slate-700);
+}
+
+/* Hover-only light states (escaped selectors). */
+.dark .hover\:bg-slate-50\/70:hover,
+.dark .hover\:bg-slate-50\/80:hover,
+.dark .hover\:bg-slate-50\/60:hover,
+.dark .hover\:bg-slate-50:hover,
+.dark .hover\:bg-slate-100:hover,
+.dark .hover\:bg-slate-100\/70:hover,
+.dark .hover\:bg-slate-100\/80:hover,
+.dark .hover\:bg-slate-200:hover,
+.dark .hover\:bg-white:hover,
+.dark .hover\:bg-white\/80:hover {
+  background-color: var(--color-slate-700);
+}
+
+.dark .hover\:text-slate-900:hover {
+  color: var(--color-slate-100);
+}
+
 /* Custom scrollbar for timeline and tables */
 ::-webkit-scrollbar {
   width: 6px;

@@ -138,7 +138,7 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
                 {project.quotaSeats} ที่นั่ง
               </span>
               {project.studyTrack && (
-                <span className="text-[10px] text-blue-700 font-medium block truncate">
+                <span className="text-[10px] text-blue-700 dark:text-blue-300 font-medium block truncate">
                   {project.studyTrack}
                 </span>
               )}

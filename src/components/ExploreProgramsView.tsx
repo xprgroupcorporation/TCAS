@@ -237,7 +237,7 @@ export const ExploreProgramsView: React.FC<ExploreProgramsViewProps> = ({
             onClick={() => handleUniversityChange('all')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold shrink-0 transition-all cursor-pointer border ${
               selectedUni === 'all'
-                ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                ? 'bg-slate-900 text-white border-slate-900 shadow-xs dark:bg-white dark:text-slate-900 dark:border-white'
                 : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
             }`}
           >
@@ -571,7 +571,7 @@ export const ExploreProgramsView: React.FC<ExploreProgramsViewProps> = ({
                   </span>
                 )}
               </div>
-              <div className="text-xs font-bold text-purple-900 flex items-center gap-1.5 pt-0.5">
+              <div className="text-xs font-bold text-purple-900 dark:text-purple-200 flex items-center gap-1.5 pt-0.5">
                 <span className="px-2 py-0.5 bg-purple-100 text-purple-800 rounded-md text-[11px]">
                   {round.short}
                 </span>
@@ -619,7 +619,7 @@ export const ExploreProgramsView: React.FC<ExploreProgramsViewProps> = ({
             </div>
             <div>
               <span className="text-slate-400 block text-[11px]">เกรดเฉลี่ย (GPAX):</span>
-              <span className="font-bold text-blue-700">
+              <span className="font-bold text-blue-700 dark:text-blue-300">
                 {p.project.gpaxMin
                   ? `GPAX ≥ ${p.project.gpaxMin}`
                   : gpaxReq?.minScore
@@ -816,7 +816,7 @@ export const ExploreProgramsView: React.FC<ExploreProgramsViewProps> = ({
         <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
           <button
             onClick={() => onOpenDetail(p)}
-            className="text-xs font-semibold text-purple-700 hover:text-purple-900 inline-flex items-center gap-1 cursor-pointer"
+            className="text-xs font-semibold text-purple-700 hover:text-purple-900 dark:text-purple-300 dark:hover:text-purple-200 inline-flex items-center gap-1 cursor-pointer"
           >
             <span>ดูเกณฑ์และระเบียบการฉบับเต็ม</span>
             <ChevronRight className="h-3.5 w-3.5" />
