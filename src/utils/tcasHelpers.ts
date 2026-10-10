@@ -15,6 +15,22 @@ import {
   ADMISSION_PROJECTS,
 } from '../data/tcasDatabase';
 
+/**
+ * Real device date as 'YYYY-MM-DD' in Asia/Bangkok (testers are in Thailand).
+ * This replaced the frozen 2026-10-07 simulation clock so every countdown,
+ * status, and calendar highlight follows the actual day.
+ */
+export function getTodayStr(timeZone = 'Asia/Bangkok'): string {
+  try {
+    return new Date().toLocaleDateString('en-CA', { timeZone });
+  } catch {
+    const d = new Date();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${d.getFullYear()}-${m}-${day}`;
+  }
+}
+
 export interface EnrichedAdmissionProject {
   project: AdmissionProject;
   university: University;
@@ -53,8 +69,8 @@ export function enrichProject(project: AdmissionProject): EnrichedAdmissionProje
   const interviewDate = interviewEvent?.startDate;
   const resultDate = resultEvent?.startDate;
 
-  // Reference date: 2026-10-07 (matching current local simulation time)
-  const today = new Date('2026-10-07T00:00:00');
+  // Reference date: real today (device date, Asia/Bangkok)
+  const today = new Date(`${getTodayStr()}T00:00:00`);
 
   let daysUntilClose: number | null = null;
   let daysUntilOpen: number | null = null;
@@ -181,7 +197,7 @@ export function getDaysCountdownThai(days: number | null): string {
   return `เหลืออีก ${days} วัน`;
 }
 
-export function getDaysLeftThai(closeDateStr: string, todayDateStr = '2026-10-07'): string {
+export function getDaysLeftThai(closeDateStr: string, todayDateStr = getTodayStr()): string {
   const today = new Date(`${todayDateStr}T00:00:00`);
   const close = new Date(`${closeDateStr}T23:59:59`);
   const diffDays = Math.ceil((close.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));

@@ -30,16 +30,21 @@ async function fetchText(url) {
   }
 }
 
-// Extractors per site. Return { seats, gpax, fee } with nulls for unknowns.
+// Extractors per site. Return { seats, gpax, fee, formula } with nulls for unknowns.
 const extractors = {
   'cmu-reg'(html) {
     const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
     const seats = text.match(/แบบ 1\.1:\s*(\d+)/)?.[1] ?? null;
     const gpax = text.match(/ไม่น้อยกว่า\s*([\d.]+)/)?.[1] ?? null;
     const fee = text.match(/([\d,]+)\s*บาท/)?.[1] ?? null;
-    return { seats: seats !== null ? Number(seats) : null, gpax, fee };
+    const weights = text.match(/ร้อยละ\s*(\d+).*?ร้อยละ\s*(\d+)/);
+    const formula = weights ? `${weights[1]}/${weights[2]}` : null;
+    return { seats: seats !== null ? Number(seats) : null, gpax, fee, formula };
   },
 };
+
+const todayISO = new Date().toISOString().slice(0, 10);
+let snapshotsDirty = false;
 
 const results = [];
 for (const s of snapshots) {
@@ -58,6 +63,10 @@ for (const s of snapshots) {
       }
     }
     if (row.diffs.length > 0) row.status = 'changed';
+    else if (s.checkedAt !== todayISO) {
+      s.checkedAt = todayISO; // fresh verification stamp, no DB change needed
+      snapshotsDirty = true;
+    }
   } catch (e) {
     row.status = 'fetch-failed';
     row.diffs.push(String(e.message ?? e).slice(0, 200));
@@ -69,6 +78,7 @@ for (const s of snapshots) {
 }
 
 fs.writeFileSync(REPORT, JSON.stringify({ checkedAt: new Date().toISOString(), results }, null, 2));
+if (snapshotsDirty) fs.writeFileSync(SNAP, JSON.stringify(snapshots, null, 2) + '\n');
 const changed = results.filter((r) => r.status === 'changed').length;
 const failed = results.filter((r) => r.status === 'fetch-failed').length;
 console.log(`\n${results.length} source(s): ${changed} changed, ${failed} fetch-failed. Report: data-check-report.json`);

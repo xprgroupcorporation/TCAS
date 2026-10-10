@@ -44,6 +44,7 @@ import {
   formatDateRangeThai,
   getDaysCountdownThai,
   getDaysLeftThai,
+  getTodayStr,
   getUniversityThaiAbbr,
   getRoundLabel,
   getUniversityTheme,
@@ -98,8 +99,8 @@ interface SpanningBar {
   isVerified: boolean;
 }
 
-// Current simulation date: 07 Oct 2026 (7 ต.ค. 2569)
-const TODAY_DATE_STR = '2026-10-07';
+// Reference date: real today (device date, Asia/Bangkok) — same clock as tcasHelpers
+const TODAY_DATE_STR = getTodayStr();
 
 export const CalendarView: React.FC<CalendarViewProps> = ({
   allProjects,
@@ -1057,7 +1058,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
             </span>
             <span className="flex items-center gap-1 font-bold text-emerald-800">
               <span className="w-2 h-2 bg-emerald-200 border border-emerald-500 rounded-2xs ring-1 ring-emerald-400" />
-              <span>วันนี้ (7 ต.ค.)</span>
+              <span>วันนี้ ({formatDateThai(TODAY_DATE_STR)})</span>
             </span>
             <span className="flex items-center gap-1 font-semibold text-slate-800">
               <span className="text-[10px] text-amber-500 font-black">★</span>

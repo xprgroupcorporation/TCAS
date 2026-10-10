@@ -1,0 +1,23 @@
+# Runs the data safety net on a schedule and on demand.
+# - data:validate audits all 122 projects (structure, seat math, dates)
+# - data:check re-fetches official admission pages and diffs seats/GPAX/fee/formula
+# Exit 2 from data:check = a university changed something -> fix DB, then merge.
+name: data-check
+
+on:
+  schedule:
+    - cron: '0 1 * * 1' # Mondays 08:00 Bangkok
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install
+      - run: npm run data:validate
+      - run: npm run data:check
