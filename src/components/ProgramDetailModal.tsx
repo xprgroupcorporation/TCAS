@@ -100,11 +100,11 @@ export const ProgramDetailModal: React.FC<ProgramDetailModalProps> = ({
               <span className="text-slate-300">·</span>
               <span className="font-bold text-slate-800">{roundInfo.th}</span>
             </div>
-            <h2 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
-              {program.nameTh}
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-snug">
+              {branch.nameTh}
             </h2>
-            <p className="text-xs text-slate-500">
-              {program.nameEn} ({branch.nameTh}) · โครงการ: {project.projectNameTh}
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              {program.nameTh} ({program.degreeName}) · โครงการ: {project.projectNameTh}
             </p>
           </div>
 

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "cmu-game-sub-competition",
+    "projectId": "proj-cmu-game-port",
+    "site": "cmu-reg",
+    "source": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=772",
+    "seats": 2,
+    "gpax": "2.75",
+    "fee": "38,000",
+    "checkedAt": "2026-10-10"
+  },
+  {
+    "id": "cmu-game-sub-gifted",
+    "projectId": "proj-cmu-game-port",
+    "site": "cmu-reg",
+    "source": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=773",
+    "seats": 8,
+    "gpax": "2.75",
+    "fee": "38,000",
+    "checkedAt": "2026-10-10"
+  }
+]

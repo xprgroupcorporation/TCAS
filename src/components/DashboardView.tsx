@@ -184,8 +184,11 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                       {p.faculty.nameTh} · {round.short}
                     </div>
                     <h3 className="font-bold text-base text-slate-900 dark:text-white leading-snug mt-0.5">
-                      {p.program.nameTh}
+                      {p.branch.nameTh}
                     </h3>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      {p.program.nameTh}
+                    </p>
                   </div>
 
                   <div className="text-sm text-slate-700 dark:text-slate-300 flex items-center justify-between gap-2">

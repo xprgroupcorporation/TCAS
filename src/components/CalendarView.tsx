@@ -1355,7 +1355,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               <div className="min-w-0 truncate">
                 <div className="flex items-center gap-2 truncate">
                   <span className="font-extrabold text-slate-900 truncate text-xs">
-                    {selectedProject.program.nameTh}
+                    {selectedProject.branch.nameTh}
                   </span>
                   <span className="text-slate-400 text-xs hidden md:inline">· {selectedProject.faculty.nameTh}</span>
                   <span className="px-1.5 py-0.2 bg-slate-100 rounded text-[10px] font-bold text-slate-700 shrink-0">
@@ -1472,9 +1472,9 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                         onClick={() => onOpenDetail(p)}
                         className="hover:underline cursor-pointer text-left"
                       >
-                        <span className="font-bold">{getUniversityThaiAbbr(p.university.id)}</span>
+                        <span className="font-bold">{p.branch.nameTh}</span>
                         {' · '}
-                        {p.program.nameTh}
+                        {p.program.nameTh} · {getUniversityThaiAbbr(p.university.id)}
                         {' · ปิดรับ '}
                         {formatDateThai(p.applicationCloseDate)}
                         {' ('}
@@ -1796,7 +1796,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                     const uniTh = getUniversityThaiAbbr(p.university.id);
                     return (
                       <option key={p.project.id} value={p.project.id}>
-                        {uniTh} — {p.program.nameTh} ({p.faculty.nameTh})
+                        {uniTh} — {p.branch.nameTh} ({p.program.nameTh})
                       </option>
                     );
                   })}
@@ -1847,10 +1847,10 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">
-                  {inspectedProject.program.nameTh}
+                  {inspectedProject.branch.nameTh}
                 </h3>
                 <p className="text-xs text-slate-500">
-                  {inspectedProject.program.nameEn} ({inspectedProject.branch.nameTh})
+                  {inspectedProject.program.nameTh} ({inspectedProject.program.degreeName})
                 </p>
               </div>
 

@@ -355,13 +355,54 @@ const rawPrograms = [
         ]
       },
       {
-        nameTh: 'สาขาวิชาการออกแบบและการพัฒนาเกมดิจิทัล', code: '10010134',
+        // ข้อมูลตรวจกับ myTCAS 10040121220103A + admission.reg.cmu.ac.th (fid 772/773) เมื่อ 2026-10-10
+        nameTh: 'สาขาวิชาดิจิทัลเกม', code: '10010134',
         projects: [
           {
-            id: 'proj-cmu-game-port', round: 'TCAS1_PORTFOLIO', nameTh: 'โครงการส่งเสริมผู้มีความสามารถพิเศษด้านดิจิทัลเกม', seats: 30,
-            track: 'ทุกแผนการเรียน', gpax: 2.50, tuition: '25,000 บาท/ภาคการศึกษา', appFee: '250 บาท',
-            portLimit: 'ไม่เกิน 10 หน้า A4', formula: 'Game/Art Portfolio 50% + สัมภาษณ์ 30% + GPAX 20%', verified: true,
-            conds: ['ผลงานตัวอย่างเกม (Prototype), Boardgame, หรือ 3D Asset', 'เปิดรับทุกแผนการเรียน'],
+            id: 'proj-cmu-game-port', round: 'TCAS1_PORTFOLIO', nameTh: 'TCAS รอบ 1 Portfolio สาขาวิชาดิจิทัลเกม', seats: 25,
+            track: 'ทุกแผนการเรียน', gpax: 2.75, tuition: '38,000 บาท (ภาคการศึกษาแรกตามประกาศ)', appFee: '250 บาท',
+            portLimit: 'ไม่เกิน 10 หน้า A4 (ยื่นผ่าน TCASFolio / PDF / URL)', formula: 'แฟ้มสะสมผลงาน 60% + สัมภาษณ์ 40%', verified: true,
+            tcasCode: '10040121220103A',
+            appUrl: 'https://course.mytcas.com/programs/10040121220103A',
+            sourceName: 'myTCAS 10040121220103A + ประกาศรับสมัคร มช. 2570',
+            sourceUrl: 'https://course.mytcas.com/programs/10040121220103A',
+            checked: '2026-10-10',
+            conds: ['รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)', 'รับผู้สมัครที่จบหลักสูตร GED (ตามเกณฑ์เทียบวุฒิ ทปอ.)'],
+            subs: [
+              {
+                id: 'cmu-game-sub-competition',
+                nameTh: 'โครงการส่งเสริมนักเรียนผู้มีความสามารถพิเศษฯ ในการประกวดแข่งขัน (รหัส 00412104108010)',
+                quotaSeats: 2,
+                studyTrack: 'หลักสูตรแกนกลาง',
+                gpaxMin: 2.75,
+                generalEligibilityTh: ['รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)', 'รับผู้สมัครที่จบหลักสูตร GED (ตามเกณฑ์เทียบวุฒิ ทปอ.)'],
+                additionalConditionsTh: ['ต้องมีรางวัลชนะเลิศ / รองชนะเลิศอันดับ 1-2 จากการแข่งขันด้าน IT/การพัฒนาเกม ระดับภาค ประเทศ หรือนานาชาติ (ม.ปลาย)', 'ระบุ Software ที่ใช้สร้างผลงาน (Unity / Unreal / Construct 3 ฯลฯ) และเตรียมโชว์ผลงานวันสัมภาษณ์'],
+                selectionFormulaTh: 'แฟ้มสะสมผลงาน 60% + สัมภาษณ์ 40%',
+                portfolioPagesLimit: 'ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)',
+                officialAnnouncementUrl: 'https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=772'
+              },
+              {
+                id: 'cmu-game-sub-gifted',
+                nameTh: 'โครงการรับนักเรียนผู้มีความสามารถพิเศษฯ (Gifted IT) (รหัส 00412104108020)',
+                quotaSeats: 8,
+                studyTrack: 'หลักสูตรแกนกลาง',
+                gpaxMin: 2.75,
+                generalEligibilityTh: ['รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)', 'รับผู้สมัครที่จบหลักสูตร GED (ตามเกณฑ์เทียบวุฒิ ทปอ.)'],
+                selectionFormulaTh: 'แฟ้มสะสมผลงาน 60% + สัมภาษณ์ 40%',
+                portfolioPagesLimit: 'ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)',
+                officialAnnouncementUrl: 'https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=773'
+              },
+              {
+                id: 'cmu-game-sub-goodgrades',
+                nameTh: 'การรับนักเรียนที่มีผลการเรียนดี (รหัส 00412104103010)',
+                quotaSeats: 15,
+                studyTrack: 'หลักสูตรแกนกลาง',
+                gpaxMin: 2.75,
+                generalEligibilityTh: ['รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ', 'ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)', 'รับผู้สมัครที่จบหลักสูตร GED (ตามเกณฑ์เทียบวุฒิ ทปอ.)'],
+                additionalConditionsTh: ['เกณฑ์เฉพาะโครงการดูประกาศทางการของมหาวิทยาลัย'],
+                officialAnnouncementUrl: 'https://admission.reg.cmu.ac.th/tcas/findfaculty.php'
+              }
+            ],
             open: '2026-10-15', close: '2026-11-20'
           }
         ]
@@ -1215,7 +1256,7 @@ rawPrograms.forEach(rp => {
         facultyId: facId,
         universityId: rp.uni,
         round: proj.round,
-        tcasProgramCode: `${br.code}101801A`,
+        tcasProgramCode: proj.tcasCode || `${br.code}101801A`,
         projectNameTh: proj.nameTh,
         projectNameEn: proj.nameTh,
         quotaSeats: proj.seats,
@@ -1227,12 +1268,13 @@ rawPrograms.forEach(rp => {
         selectionFormulaTh: proj.formula,
         curriculumType: rp.isInter ? 'หลักสูตรนานาชาติ' : 'หลักสูตรปกติ',
         additionalConditionsTh: proj.conds,
-        applicationUrl: 'https://course.mytcas.com/universities/',
+        ...(proj.subs ? { subProjects: proj.subs } : {}),
+        applicationUrl: proj.appUrl || 'https://course.mytcas.com/universities/',
         source: {
-          name: `ประกาศรับสมัคร myTCAS / ${rp.facNameTh}`,
-          url: 'https://course.mytcas.com/universities/',
+          name: proj.sourceName || `ประกาศรับสมัคร myTCAS / ${rp.facNameTh}`,
+          url: proj.sourceUrl || 'https://course.mytcas.com/universities/',
           type: 'Official myTCAS Portal',
-          lastChecked: '2026-10-07',
+          lastChecked: proj.checked || '2026-10-07',
           verificationStatus: proj.verified ? 'verified' : 'unverified'
         },
         requirements: [

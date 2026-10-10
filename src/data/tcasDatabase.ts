@@ -2296,8 +2296,8 @@ export const BRANCHES: Branch[] = [
   {
     "id": "br-10010134",
     "programId": "prog-cmu-9",
-    "nameTh": "สาขาวิชาการออกแบบและการพัฒนาเกมดิจิทัล",
-    "nameEn": "สาขาวิชาการออกแบบและการพัฒนาเกมดิจิทัล",
+    "nameTh": "สาขาวิชาดิจิทัลเกม",
+    "nameEn": "สาขาวิชาดิจิทัลเกม",
     "code": "10010134"
   },
   {
@@ -4979,38 +4979,99 @@ export const ADMISSION_PROJECTS: AdmissionProject[] = [
     "facultyId": "cmu-science_computing-9",
     "universityId": "cmu",
     "round": "TCAS1_PORTFOLIO",
-    "tcasProgramCode": "10010134101801A",
-    "projectNameTh": "โครงการส่งเสริมผู้มีความสามารถพิเศษด้านดิจิทัลเกม",
-    "projectNameEn": "โครงการส่งเสริมผู้มีความสามารถพิเศษด้านดิจิทัลเกม",
-    "quotaSeats": 30,
+    "tcasProgramCode": "10040121220103A",
+    "projectNameTh": "TCAS รอบ 1 Portfolio สาขาวิชาดิจิทัลเกม",
+    "projectNameEn": "TCAS Round 1 Portfolio - Digital Game",
+    "quotaSeats": 25,
     "studyTrack": "ทุกแผนการเรียน",
-    "gpaxMin": 2.5,
-    "tuitionFee": "25,000 บาท/ภาคการศึกษา",
+    "gpaxMin": 2.75,
+    "tuitionFee": "38,000 บาท (ภาคการศึกษาแรกตามประกาศ)",
     "applicationFee": "250 บาท",
-    "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4",
-    "selectionFormulaTh": "Game/Art Portfolio 50% + สัมภาษณ์ 30% + GPAX 20%",
+    "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4 (ยื่นผ่าน TCASFolio / PDF / URL)",
+    "selectionFormulaTh": "แฟ้มสะสมผลงาน 60% + สัมภาษณ์ 40%",
     "curriculumType": "หลักสูตรปกติ",
     "additionalConditionsTh": [
-      "ผลงานตัวอย่างเกม (Prototype), Boardgame, หรือ 3D Asset",
-      "เปิดรับทุกแผนการเรียน"
+      "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+      "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+      "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ",
+      "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)",
+      "รับผู้สมัครที่จบหลักสูตร GED (ตามเกณฑ์เทียบวุฒิ ทปอ.)"
     ],
-    "applicationUrl": "https://course.mytcas.com/universities/",
+    "subProjects": [
+      {
+        "id": "cmu-game-sub-competition",
+        "nameTh": "โครงการส่งเสริมนักเรียนผู้มีความสามารถพิเศษฯ ในการประกวดแข่งขัน (รหัส 00412104108010)",
+        "quotaSeats": 2,
+        "studyTrack": "หลักสูตรแกนกลาง",
+        "gpaxMin": 2.75,
+        "generalEligibilityTh": [
+          "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)",
+          "รับผู้สมัครที่จบหลักสูตร GED (ตามเกณฑ์เทียบวุฒิ ทปอ.)"
+        ],
+        "additionalConditionsTh": [
+          "ต้องมีรางวัลชนะเลิศ / รองชนะเลิศอันดับ 1-2 จากการแข่งขันด้าน IT/การพัฒนาเกม ระดับภาค ประเทศ หรือนานาชาติ (ม.ปลาย)",
+          "ระบุ Software ที่ใช้สร้างผลงาน (Unity / Unreal / Construct 3 ฯลฯ) และเตรียมโชว์ผลงานวันสัมภาษณ์"
+        ],
+        "selectionFormulaTh": "แฟ้มสะสมผลงาน 60% + สัมภาษณ์ 40%",
+        "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)",
+        "officialAnnouncementUrl": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=772"
+      },
+      {
+        "id": "cmu-game-sub-gifted",
+        "nameTh": "โครงการรับนักเรียนผู้มีความสามารถพิเศษฯ (Gifted IT) (รหัส 00412104108020)",
+        "quotaSeats": 8,
+        "studyTrack": "หลักสูตรแกนกลาง",
+        "gpaxMin": 2.75,
+        "generalEligibilityTh": [
+          "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)",
+          "รับผู้สมัครที่จบหลักสูตร GED (ตามเกณฑ์เทียบวุฒิ ทปอ.)"
+        ],
+        "selectionFormulaTh": "แฟ้มสะสมผลงาน 60% + สัมภาษณ์ 40%",
+        "portfolioPagesLimit": "ไม่เกิน 10 หน้า A4 (TCASFolio / PDF / URL)",
+        "officialAnnouncementUrl": "https://admission.reg.cmu.ac.th/tcas/findfacultybyid.php?fid=773"
+      },
+      {
+        "id": "cmu-game-sub-goodgrades",
+        "nameTh": "การรับนักเรียนที่มีผลการเรียนดี (รหัส 00412104103010)",
+        "quotaSeats": 15,
+        "studyTrack": "หลักสูตรแกนกลาง",
+        "gpaxMin": 2.75,
+        "generalEligibilityTh": [
+          "รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรอาชีวะ",
+          "ไม่รับผู้สมัครที่จบจาก รร. หลักสูตรตามอัธยาศัย (กศน.)",
+          "รับผู้สมัครที่จบหลักสูตร GED (ตามเกณฑ์เทียบวุฒิ ทปอ.)"
+        ],
+        "additionalConditionsTh": [
+          "เกณฑ์เฉพาะโครงการดูประกาศทางการของมหาวิทยาลัย"
+        ],
+        "officialAnnouncementUrl": "https://admission.reg.cmu.ac.th/tcas/findfaculty.php"
+      }
+    ],
+    "applicationUrl": "https://course.mytcas.com/programs/10040121220103A",
     "source": {
-      "name": "ประกาศรับสมัคร myTCAS / วิทยาลัยศิลปะ สื่อ และเทคโนโลยี (CAMT)",
-      "url": "https://course.mytcas.com/universities/",
+      "name": "myTCAS 10040121220103A + ประกาศรับสมัคร มช. 2570",
+      "url": "https://course.mytcas.com/programs/10040121220103A",
       "type": "Official myTCAS Portal",
-      "lastChecked": "2026-10-07",
+      "lastChecked": "2026-10-10",
       "verificationStatus": "verified"
     },
     "requirements": [
       {
         "id": "req-proj-cmu-game-port-gpax",
         "type": "GPAX",
-        "nameTh": "GPAX ขั้นต่ำ 2.5",
-        "nameEn": "Minimum GPAX 2.5",
-        "minScore": "2.5",
-        "detailsTh": "เกรดเฉลี่ยสะสม 5 ภาคเรียน ไม่ต่ำกว่า 2.5",
-        "detailsEn": "5-term cumulative GPA at least 2.5",
+        "nameTh": "GPAX ขั้นต่ำ 2.75",
+        "nameEn": "Minimum GPAX 2.75",
+        "minScore": "2.75",
+        "detailsTh": "เกรดเฉลี่ยสะสม ม.4-6 (5 ภาคเรียน) ไม่ต่ำกว่า 2.75 (ผู้จบ ม.6 ใช้ 6 ภาคเรียน)",
+        "detailsEn": "5-term cumulative GPA at least 2.75 (6 terms for graduates)",
         "isMandatory": true
       }
     ],
@@ -5019,9 +5080,27 @@ export const ADMISSION_PROJECTS: AdmissionProject[] = [
         "id": "doc-proj-cmu-game-port-trans",
         "nameTh": "ใบรายงานผลการเรียน ปพ.1 (5 ภาคเรียน)",
         "nameEn": "Transcript",
-        "detailsTh": "ฉบับจริงพร้อมตราประทับโรงเรียน",
+        "detailsTh": "ฉบับจริงพร้อมตราประทับโรงเรียน (หน้า-หลัง)",
         "detailsEn": "Official high school transcript",
         "isMandatory": true,
+        "submissionFormat": "PDF"
+      },
+      {
+        "id": "doc-proj-cmu-game-port-portfolio",
+        "nameTh": "แฟ้มสะสมผลงาน (ไม่เกิน 10 หน้า)",
+        "nameEn": "Portfolio",
+        "detailsTh": "ยื่นผ่าน TCASFolio / PDF / URL (เปิดสาธารณะ): ข้อมูลส่วนตัว, SOP ด้านเกม, จดหมายรับรอง + ปพ.1, กิจกรรม/รางวัล + ลิงก์ผลงาน",
+        "detailsEn": "Max 10 pages via TCASFolio / PDF / URL",
+        "isMandatory": true,
+        "submissionFormat": "TCASFolio / PDF / URL"
+      },
+      {
+        "id": "doc-proj-cmu-game-port-cert",
+        "nameTh": "หลักฐานรางวัลการแข่งขัน (เฉพาะโครงการประกวดแข่งขัน)",
+        "nameEn": "Competition certificates",
+        "detailsTh": "ประกาศนียบัตรรางวัลชนะเลิศ / รองชนะเลิศอันดับ 1-2 แข่งขัน IT/พัฒนาเกม ระดับภาค/ประเทศ/นานาชาติ",
+        "detailsEn": "Top-3 awards from IT/game competitions",
+        "isMandatory": false,
         "submissionFormat": "PDF"
       }
     ],
@@ -5029,14 +5108,14 @@ export const ADMISSION_PROJECTS: AdmissionProject[] = [
       {
         "id": "ev-proj-cmu-game-port-open",
         "type": "APPLICATION_OPENS",
-        "titleTh": "เปิดรับสมัคร โครงการส่งเสริมผู้มีความสามารถพิเศษด้านดิจิทัลเกม",
+        "titleTh": "เปิดรับสมัคร TCAS รอบ 1 Portfolio สาขาวิชาดิจิทัลเกม",
         "titleEn": "Application Opens",
         "startDate": "2026-10-15",
         "source": {
           "name": "myTCAS Portal",
-          "url": "https://course.mytcas.com/universities/",
+          "url": "https://course.mytcas.com/programs/10040121220103A",
           "type": "Official myTCAS Portal",
-          "lastChecked": "2026-10-07",
+          "lastChecked": "2026-10-10",
           "verificationStatus": "verified"
         },
         "status": "verified"
@@ -5044,14 +5123,14 @@ export const ADMISSION_PROJECTS: AdmissionProject[] = [
       {
         "id": "ev-proj-cmu-game-port-close",
         "type": "APPLICATION_CLOSES",
-        "titleTh": "ปิดรับสมัคร โครงการส่งเสริมผู้มีความสามารถพิเศษด้านดิจิทัลเกม (23:59 น.)",
+        "titleTh": "ปิดรับสมัคร TCAS รอบ 1 Portfolio สาขาวิชาดิจิทัลเกม (23:59 น.)",
         "titleEn": "Application Deadline",
         "startDate": "2026-11-20",
         "source": {
           "name": "myTCAS Portal",
-          "url": "https://course.mytcas.com/universities/",
+          "url": "https://course.mytcas.com/programs/10040121220103A",
           "type": "Official myTCAS Portal",
-          "lastChecked": "2026-10-07",
+          "lastChecked": "2026-10-10",
           "verificationStatus": "verified"
         },
         "status": "verified"
